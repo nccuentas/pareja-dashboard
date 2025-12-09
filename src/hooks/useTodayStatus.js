@@ -6,7 +6,7 @@ export default function useTodayStatus() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/status/today")
+      .get("https://pareja-backend-cjau.onrender.com/api/status/today")
       .then((res) => {
         setStatus(res.data);
       })
