@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/home.css";
+import useStreak from "../hooks/useStreak";
 
 export default function Home() {
   const nav = useNavigate();
@@ -13,32 +15,56 @@ export default function Home() {
 
   if (!user) return null;
 
-  const displayName = user === "nicolas" ? "Nicolás" : "Kely";
+  const displayName = user === "nicolas" ? "Nicolas" : "Kely";
+
+  // ✅ racha
+  const streak = useStreak(user);
 
   return (
-    <div className="screen">
+    <div className="screen home-screen">
+      {/* HEADER */}
       <header className={`home-header home-header-${user}`}>
         <h1>Hola, {displayName}</h1>
-        <p>Gracias por darte un momento para revisar cómo te sientes.</p>
+        <strong>Gracias por darte un momento para revisar cómo te sientes, te amo.</strong>
       </header>
 
+      {/* RACHA */}
+      <div className="streak-box">
+        {streak === null && <span>⏳ Calculando racha…</span>}
+
+        {streak === 0 && (
+          <span>🧊 Sin racha activa — empieza hoy</span>
+        )}
+
+        {streak === 1 && (
+          <span>🔥 1 día seguido</span>
+        )}
+
+        {streak > 1 && (
+          <span>🔥 {streak} días seguidos</span>
+        )}
+      </div>
+
+      {/* CONTENIDO */}
       <main className="home-main">
-        <button
-          className="btn-primary"
-          onClick={() => nav("/daily")}
-        >
-          Hacer check-in de hoy
-        </button>
+        <section className="home-card">
+          <button
+            className="btn-primary full-width"
+            onClick={() => nav("/daily")}
+          >
+             Hacer check-in de hoy
+          </button>
+
+          <button
+            className="btn-secondary full-width"
+            onClick={() => nav("/weekly")}
+          >
+             Ver resumen de la semana
+          </button>
+        </section>
 
         <button
-          className="btn-secondary"
-          onClick={() => nav("/weekly")}
-        >
-          Ver resumen de la semana
-        </button>
-
-        <button
-          className="btn-text"
+          className="btn-text subtle"
           onClick={() => nav("/")}
         >
           Cambiar de persona

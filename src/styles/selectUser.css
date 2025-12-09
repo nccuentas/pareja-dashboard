@@ -1,0 +1,57 @@
+.select-user-screen {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #020617, #030712);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.select-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #e5e7eb;
+}
+
+.user-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.user-card {
+  border: none;
+  border-radius: 22px;
+  padding: 2rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.user-card:active {
+  transform: scale(0.97);
+}
+
+.user-card .avatar {
+  font-size: 2.6rem;
+}
+
+/* Nicolás */
+.user-card.nicolas {
+  background: rgba(96, 165, 250, 0.15);
+  color: #93c5fd;
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+}
+
+/* Kely */
+.user-card.kely {
+  background: rgba(236, 72, 153, 0.15);
+  color: #f9a8d4;
+  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.3);
+}
